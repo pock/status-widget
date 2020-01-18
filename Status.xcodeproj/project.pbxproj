@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		3401772D23D3231D00369905 /* StatusWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401772C23D3231D00369905 /* StatusWidget.swift */; };
+		3401773523D323CD00369905 /* StatusItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401773423D323CD00369905 /* StatusItem.swift */; };
+		3401773923D3241000369905 /* SClockItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401773623D3241000369905 /* SClockItem.swift */; };
+		3401773A23D3241000369905 /* SPowerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401773723D3241000369905 /* SPowerItem.swift */; };
+		3401773B23D3241000369905 /* SWifiItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401773823D3241000369905 /* SWifiItem.swift */; };
+		3401773E23D324EF00369905 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401773D23D324EF00369905 /* Preferences.swift */; };
+		3401774A23D325DD00369905 /* StatusWidgetPreferencePane.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3401774123D325DD00369905 /* StatusWidgetPreferencePane.strings */; };
+		3401774B23D325DD00369905 /* StatusWidgetPreferencePane.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3401774523D325DD00369905 /* StatusWidgetPreferencePane.xib */; };
+		3401774C23D325DD00369905 /* StatusWidgetPreferencePane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401774923D325DD00369905 /* StatusWidgetPreferencePane.swift */; };
+		C1D0E7696EB2EC07C7557D36 /* Pods_Status.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3712FB53353E8D66C89087DD /* Pods_Status.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -15,6 +24,21 @@
 		3401772A23D3231D00369905 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; };
 		3401772C23D3231D00369905 /* StatusWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusWidget.swift; sourceTree = "<group>"; };
 		3401772E23D3231D00369905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3401773423D323CD00369905 /* StatusItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItem.swift; sourceTree = "<group>"; };
+		3401773623D3241000369905 /* SClockItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SClockItem.swift; sourceTree = "<group>"; };
+		3401773723D3241000369905 /* SPowerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPowerItem.swift; sourceTree = "<group>"; };
+		3401773823D3241000369905 /* SWifiItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWifiItem.swift; sourceTree = "<group>"; };
+		3401773D23D324EF00369905 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		3401774223D325DD00369905 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/StatusWidgetPreferencePane.strings"; sourceTree = "<group>"; };
+		3401774323D325DD00369905 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/StatusWidgetPreferencePane.strings; sourceTree = "<group>"; };
+		3401774423D325DD00369905 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/StatusWidgetPreferencePane.strings; sourceTree = "<group>"; };
+		3401774623D325DD00369905 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/StatusWidgetPreferencePane.xib; sourceTree = "<group>"; };
+		3401774723D325DD00369905 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/StatusWidgetPreferencePane.strings"; sourceTree = "<group>"; };
+		3401774823D325DD00369905 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/StatusWidgetPreferencePane.strings; sourceTree = "<group>"; };
+		3401774923D325DD00369905 /* StatusWidgetPreferencePane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusWidgetPreferencePane.swift; sourceTree = "<group>"; };
+		3712FB53353E8D66C89087DD /* Pods_Status.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Status.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9347816283C4AB2AF67D68D4 /* Pods-Status.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Status.release.xcconfig"; path = "Target Support Files/Pods-Status/Pods-Status.release.xcconfig"; sourceTree = "<group>"; };
+		CB926D07BCC33E6C4950E6CD /* Pods-Status.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Status.debug.xcconfig"; path = "Target Support Files/Pods-Status/Pods-Status.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -22,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1D0E7696EB2EC07C7557D36 /* Pods_Status.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -33,6 +58,8 @@
 			children = (
 				3401772923D3231D00369905 /* Status */,
 				3401772823D3231D00369905 /* Products */,
+				43D9A762481AC806E3D29B23 /* Pods */,
+				E407CFE0DC443983050B23C8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,8 +85,57 @@
 			isa = PBXGroup;
 			children = (
 				3401772C23D3231D00369905 /* StatusWidget.swift */,
+				3401773423D323CD00369905 /* StatusItem.swift */,
+				3401773C23D3241400369905 /* Items */,
+				3401773F23D324F300369905 /* Preferences */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		3401773C23D3241400369905 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				3401773623D3241000369905 /* SClockItem.swift */,
+				3401773723D3241000369905 /* SPowerItem.swift */,
+				3401773823D3241000369905 /* SWifiItem.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		3401773F23D324F300369905 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				3401773D23D324EF00369905 /* Preferences.swift */,
+				3401774023D325DD00369905 /* StatusWidgetPreferencePane */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		3401774023D325DD00369905 /* StatusWidgetPreferencePane */ = {
+			isa = PBXGroup;
+			children = (
+				3401774123D325DD00369905 /* StatusWidgetPreferencePane.strings */,
+				3401774523D325DD00369905 /* StatusWidgetPreferencePane.xib */,
+				3401774923D325DD00369905 /* StatusWidgetPreferencePane.swift */,
+			);
+			path = StatusWidgetPreferencePane;
+			sourceTree = "<group>";
+		};
+		43D9A762481AC806E3D29B23 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CB926D07BCC33E6C4950E6CD /* Pods-Status.debug.xcconfig */,
+				9347816283C4AB2AF67D68D4 /* Pods-Status.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E407CFE0DC443983050B23C8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3712FB53353E8D66C89087DD /* Pods_Status.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -69,6 +145,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3401773123D3231D00369905 /* Build configuration list for PBXNativeTarget "Status" */;
 			buildPhases = (
+				1BC8629D672E307759B16C56 /* [CP] Check Pods Manifest.lock */,
 				3401772223D3231D00369905 /* Sources */,
 				3401772323D3231D00369905 /* Frameworks */,
 				3401772423D3231D00369905 /* Resources */,
@@ -105,6 +182,10 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				it,
+				"zh-Hant",
+				tr,
 			);
 			mainGroup = 3401771D23D3231D00369905;
 			productRefGroup = 3401772823D3231D00369905 /* Products */;
@@ -121,12 +202,36 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3401774B23D325DD00369905 /* StatusWidgetPreferencePane.xib in Resources */,
+				3401774A23D325DD00369905 /* StatusWidgetPreferencePane.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1BC8629D672E307759B16C56 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Status-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3401772523D3231D00369905 /* Copy widget to destination folder */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -152,11 +257,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3401773923D3241000369905 /* SClockItem.swift in Sources */,
+				3401773523D323CD00369905 /* StatusItem.swift in Sources */,
+				3401774C23D325DD00369905 /* StatusWidgetPreferencePane.swift in Sources */,
+				3401773E23D324EF00369905 /* Preferences.swift in Sources */,
+				3401773A23D3241000369905 /* SPowerItem.swift in Sources */,
+				3401773B23D3241000369905 /* SWifiItem.swift in Sources */,
 				3401772D23D3231D00369905 /* StatusWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3401774123D325DD00369905 /* StatusWidgetPreferencePane.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3401774223D325DD00369905 /* zh-Hans */,
+				3401774323D325DD00369905 /* en */,
+				3401774423D325DD00369905 /* it */,
+				3401774723D325DD00369905 /* zh-Hant */,
+				3401774823D325DD00369905 /* tr */,
+			);
+			name = StatusWidgetPreferencePane.strings;
+			sourceTree = "<group>";
+		};
+		3401774523D325DD00369905 /* StatusWidgetPreferencePane.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3401774623D325DD00369905 /* Base */,
+			);
+			name = StatusWidgetPreferencePane.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3401772F23D3231D00369905 /* Debug */ = {
@@ -270,6 +404,7 @@
 		};
 		3401773223D3231D00369905 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB926D07BCC33E6C4950E6CD /* Pods-Status.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -286,6 +421,7 @@
 		};
 		3401773323D3231D00369905 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9347816283C4AB2AF67D68D4 /* Pods-Status.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

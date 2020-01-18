@@ -16,12 +16,73 @@ class StatusWidget: PKWidget {
     var customizationLabel: String = "Status"
     var view: NSView!
     
+    /// Core
+    private var statusElements: [StatusItem] = [
+        SWifiItem(),
+        SPowerItem(),
+        SClockItem()
+    ]
+    private var statusElementViews: [String: NSView] = [:]
+    
+    /// UI
+    private var stackView: NSStackView!
+    
     required init() {
-        self.view = PKButton(title: "Status", target: self, action: #selector(printMessage))
+        self.customizationLabel = "Status"
+        self.initStackView()
+        self.loadStatusElements()
+        self.view = stackView
     }
     
-    @objc private func printMessage() {
-        NSLog("[StatusWidget]: Hello, World!")
+    deinit {
+        statusElementViews.removeAll()
+        for item in statusElements {
+            item.didUnload()
+        }
+        statusElements.removeAll()
     }
+    
+    func viewDidAppear() {
+        NSWorkspace.shared.notificationCenter.addObserver(forName: .shouldReloadStatusWidget, object: nil, queue: .main, using: { [weak self] _ in
+            self?.loadStatusElements()
+        })
+    }
+    
+    func viewWillDisappear() {
+        for item in statusElements {
+            item.didUnload()
+        }
+        NSWorkspace.shared.notificationCenter.removeObserver(self)
+    }
+    
+    private func initStackView() {
+        stackView = NSStackView(frame: NSRect(x: 0, y: 0, width: 100, height: 30))
+        stackView.orientation  = .horizontal
+        stackView.alignment    = .centerY
+        stackView.distribution = .fillProportionally
+        stackView.spacing      = 8
+    }
+    
+    private func clearStackView() {
+        stackView.arrangedSubviews.forEach({ subview in
+            stackView.removeView(subview)
+        })
+    }
+    
+    private func loadStatusElements() {
+        clearStackView()
+        statusElements.filter({ $0.enabled }).forEach({ item in
+            item.didLoad()
+            if let cachedView = statusElementViews[item.title] {
+                item.reload()
+                stackView.addArrangedSubview(cachedView)
+            }else {
+                statusElementViews[item.title] = item.view
+                item.reload()
+                stackView.addArrangedSubview(item.view)
+            }
+        })
+    }
+    
     
 }

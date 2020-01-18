@@ -24,5 +24,7 @@
 	<string>Status.StatusWidget</string>
 	<key>PKWidgetAuthor</key>
 	<string>Pierluigi Galdi</string>
+	<key>PKWidgetPreferenceClass</key>
+	<string>Status.StatusWidgetPreferencePane</string>
 </dict>
 </plist>

@@ -1,0 +1,10 @@
+## .DS_Store
+.DS_Store
+
+## No Pods folder
+Podfile.lock
+Pods/
+
+## Userdata
+Status.xcodeproj/xcuserdata/
+Status.xcworkspace/xcuserdata/
