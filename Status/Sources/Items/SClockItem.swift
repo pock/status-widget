@@ -31,7 +31,7 @@ internal class SClockItem: StatusItem {
         if clockLabel == nil {
             clockLabel = NSTextField()
             clockLabel.frame = CGRect(origin: .zero, size: CGSize(width: 100, height: 44))
-            clockLabel.font = NSFont.systemFont(ofSize: 13)
+            clockLabel.font = NSFont.monospacedDigitSystemFont(ofSize: 13, weight: .medium)
             clockLabel.backgroundColor = .clear
             clockLabel.isBezeled = false
             clockLabel.isEditable = false
