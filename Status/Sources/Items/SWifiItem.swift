@@ -62,7 +62,9 @@ internal class SWifiItem: StatusItem {
             let c = code - 1
             icon = "wifi\(c > 4 ? 4 : c)"
         }
-        iconView.image = NSImage(named: icon)
+        DispatchQueue.main.async { [weak self] in
+            self?.iconView.image = NSImage(named: icon)
+        }
     }
     
 }
