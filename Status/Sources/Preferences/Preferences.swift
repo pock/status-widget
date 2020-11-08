@@ -13,6 +13,7 @@ extension NSNotification.Name {
 }
 
 extension Defaults.Keys {
+	static let shouldShowLangItem		   = Defaults.Key<Bool>("shouldShowLangItem",		   default: true)
     static let shouldShowWifiItem          = Defaults.Key<Bool>("shouldShowWifiItem",          default: true)
     static let shouldShowPowerItem         = Defaults.Key<Bool>("shouldShowPowerItem",         default: true)
     static let shouldShowBatteryIcon       = Defaults.Key<Bool>("shouldShowBatteryIcon",       default: true)

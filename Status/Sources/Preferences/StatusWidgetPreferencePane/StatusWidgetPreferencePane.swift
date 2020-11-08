@@ -15,6 +15,7 @@ class StatusWidgetPreferencePane: NSViewController, NSTextFieldDelegate, PKWidge
     static var nibName: NSNib.Name = "StatusWidgetPreferencePane"
 
     /// UI
+	@IBOutlet weak var showLangItem:			  NSButton!
     @IBOutlet weak var showWifiItem:              NSButton!
     @IBOutlet weak var showPowerItem:             NSButton!
     @IBOutlet weak var showBatteryIconItem:       NSButton!
@@ -32,7 +33,8 @@ class StatusWidgetPreferencePane: NSViewController, NSTextFieldDelegate, PKWidge
     }
     
     private func loadCheckboxState() {
-        self.showWifiItem.state              = Defaults[.shouldShowWifiItem]          ? .on : .off
+		self.showLangItem.state              = Defaults[.shouldShowLangItem]          ? .on : .off
+		self.showWifiItem.state              = Defaults[.shouldShowWifiItem]          ? .on : .off
         self.showPowerItem.state             = Defaults[.shouldShowPowerItem]         ? .on : .off
         self.showBatteryIconItem.state       = Defaults[.shouldShowBatteryIcon]       ? .on : .off
         self.showBatteryPercentageItem.state = Defaults[.shouldShowBatteryPercentage] ? .on : .off
@@ -42,6 +44,8 @@ class StatusWidgetPreferencePane: NSViewController, NSTextFieldDelegate, PKWidge
     @IBAction func didChangeCheckboxValue(_ checkbox: NSButton) {
         var key: Defaults.Key<Bool>
         switch checkbox.tag {
+		case 0:
+			key = .shouldShowLangItem
         case 1:
             key = .shouldShowWifiItem
         case 2:
