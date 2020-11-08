@@ -109,7 +109,7 @@ internal class SPowerItem: StatusItem {
                 iconName = "powerEmpty"
                 buildBatteryIcon(withValue: value)
             }
-            iconView.image    = NSImage(named: iconName)
+			iconView.image    = Bundle(for: StatusWidget.self).image(forResource: iconName)
             iconView.isHidden = false
         }else {
             iconView.isHidden = true
@@ -125,7 +125,12 @@ internal class SPowerItem: StatusItem {
         if !iconView.subviews.contains(bodyView) {
             iconView.addSubview(bodyView)
         }
-        bodyView.layer?.backgroundColor = value > 10 ? NSColor.lightGray.cgColor : NSColor.red.cgColor
+		switch value {
+		case 0...20:
+			bodyView.layer?.backgroundColor = NSColor.red.cgColor
+		default:
+			bodyView.layer?.backgroundColor = NSColor.white.cgColor
+		}
         bodyView.frame.size.width = max(width, 1.25)
     }
 }
