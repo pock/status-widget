@@ -11,14 +11,14 @@ import Defaults
 import IOKit.ps
 
 struct SPowerStatus {
-    var isCharging: Bool, currentValue: Int
+	var isCharging: Bool, isCharged: Bool, currentValue: Int
 }
 
 internal class SPowerItem: StatusItem {
     
     /// Core
     private var refreshTimer: Timer?
-    private var powerStatus: SPowerStatus = SPowerStatus(isCharging: false, currentValue: 0)
+	private var powerStatus: SPowerStatus = SPowerStatus(isCharging: false, isCharged: false, currentValue: 0)
     private var shouldShowBatteryIcon: Bool {
         return Defaults[.shouldShowBatteryIcon]
     }
@@ -93,6 +93,9 @@ internal class SPowerItem: StatusItem {
             if let isCharging = info[kIOPSIsChargingKey] as? Bool {
                 self.powerStatus.isCharging = isCharging
             }
+			if let isCharged = info[kIOPSIsChargedKey] as? Bool {
+				self.powerStatus.isCharged = isCharged
+			}
         }
         DispatchQueue.main.async { [weak self] in
             self?.updateIcon(value: self?.powerStatus.currentValue ?? 0)
@@ -102,7 +105,10 @@ internal class SPowerItem: StatusItem {
     private func updateIcon(value: Int) {
         if shouldShowBatteryIcon {
             var iconName: NSImage.Name!
-            if powerStatus.isCharging {
+			if powerStatus.isCharged {
+				iconView.subviews.forEach({ $0.removeFromSuperview() })
+				iconName = "powerIsCharged"
+			}else if powerStatus.isCharging {
                 iconView.subviews.forEach({ $0.removeFromSuperview() })
                 iconName = "powerIsCharging"
             }else {
