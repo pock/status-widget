@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import Defaults
 import PockKit
 
 class StatusWidgetPreferencePane: NSViewController, NSTextFieldDelegate, PKWidgetPreference {
@@ -29,20 +28,20 @@ class StatusWidgetPreferencePane: NSViewController, NSTextFieldDelegate, PKWidge
         self.view.wantsLayer = true
         self.loadCheckboxState()
         self.timeFormatTextField.delegate = self
-        self.timeFormatTextField.stringValue = Defaults[.timeFormatTextField]
+        self.timeFormatTextField.stringValue = Preferences[.timeFormatTextField]
     }
     
     private func loadCheckboxState() {
-		self.showLangItem.state              = Defaults[.shouldShowLangItem]          ? .on : .off
-		self.showWifiItem.state              = Defaults[.shouldShowWifiItem]          ? .on : .off
-        self.showPowerItem.state             = Defaults[.shouldShowPowerItem]         ? .on : .off
-        self.showBatteryIconItem.state       = Defaults[.shouldShowBatteryIcon]       ? .on : .off
-        self.showBatteryPercentageItem.state = Defaults[.shouldShowBatteryPercentage] ? .on : .off
-        self.showDateItem.state              = Defaults[.shouldShowDateItem]          ? .on : .off
+		self.showLangItem.state              = Preferences[.shouldShowLangItem]          ? .on : .off
+		self.showWifiItem.state              = Preferences[.shouldShowWifiItem]          ? .on : .off
+        self.showPowerItem.state             = Preferences[.shouldShowPowerItem]         ? .on : .off
+        self.showBatteryIconItem.state       = Preferences[.shouldShowBatteryIcon]       ? .on : .off
+        self.showBatteryPercentageItem.state = Preferences[.shouldShowBatteryPercentage] ? .on : .off
+        self.showDateItem.state              = Preferences[.shouldShowDateItem]          ? .on : .off
     }
     
     @IBAction func didChangeCheckboxValue(_ checkbox: NSButton) {
-        var key: Defaults.Key<Bool>
+		var key: Preferences.Keys
         switch checkbox.tag {
 		case 0:
 			key = .shouldShowLangItem
@@ -59,8 +58,8 @@ class StatusWidgetPreferencePane: NSViewController, NSTextFieldDelegate, PKWidge
         default:
             return
         }
-        Defaults[key] = checkbox.state == .on
-        NSWorkspace.shared.notificationCenter.post(name: .shouldReloadStatusWidget, object: nil)
+		Preferences[key] = checkbox.state == .on
+		NotificationCenter.default.post(name: .shouldReloadStatusWidget, object: nil)
     }
     
     @IBAction func openTimeFormatHelpURL(_ sender: NSButton) {
@@ -69,6 +68,6 @@ class StatusWidgetPreferencePane: NSViewController, NSTextFieldDelegate, PKWidge
     }
     
     func controlTextDidChange(_ obj: Notification) {
-        Defaults[.timeFormatTextField] = timeFormatTextField.stringValue
+		Preferences[.timeFormatTextField] = timeFormatTextField.stringValue
     }
 }

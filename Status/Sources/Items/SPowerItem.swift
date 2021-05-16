@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Defaults
+import AppKit
 import IOKit.ps
 
 struct SPowerStatus {
@@ -20,34 +20,36 @@ internal class SPowerItem: StatusItem {
     private var refreshTimer: Timer?
 	private var powerStatus: SPowerStatus = SPowerStatus(isCharging: false, isCharged: false, currentValue: 0)
     private var shouldShowBatteryIcon: Bool {
-        return Defaults[.shouldShowBatteryIcon]
+        return Preferences[.shouldShowBatteryIcon]
     }
     private var shouldShowBatteryPercentage: Bool {
-        return Defaults[.shouldShowBatteryPercentage]
+        return Preferences[.shouldShowBatteryPercentage]
     }
     
     /// UI
     private let stackView: NSStackView = NSStackView(frame: .zero)
     private let iconView: NSImageView = NSImageView(frame: NSRect(x: 0, y: 0, width: 26, height: 26))
     private let bodyView: NSView      = NSView(frame: NSRect(x: 2, y: 2, width: 21, height: 8))
-    private let valueLabel: NSTextField = NSTextField(frame: .zero)
+    private let valueLabel: NSTextField = NSTextField(labelWithString: "-%")
     
     init() {
+		print("[Status]: init SPowerItem")
         didLoad()
-        reload()
     }
     
     deinit {
         didUnload()
+		print("[Status]: deinit SPowerItem")
     }
     
     func didLoad() {
         bodyView.layer?.cornerRadius = 1
         configureValueLabel()
         configureStackView()
-        refreshTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
-            self?.reload()
-        })
+		reload()
+		refreshTimer = Timer.scheduledTimer(timeInterval: 1, target: self, repeats: true, action: { [weak self] in
+			self?.reload()
+		})
     }
     
     func didUnload() {
@@ -55,7 +57,7 @@ internal class SPowerItem: StatusItem {
         refreshTimer = nil
     }
     
-    var enabled: Bool{ return Defaults[.shouldShowPowerItem] }
+    var enabled: Bool{ return Preferences[.shouldShowPowerItem] }
     
     var title: String  { return "power" }
     
@@ -66,10 +68,7 @@ internal class SPowerItem: StatusItem {
     }
     
     private func configureValueLabel() {
-        valueLabel.font = NSFont.systemFont(ofSize: 13)
-        valueLabel.backgroundColor = .clear
-        valueLabel.isBezeled = false
-        valueLabel.isEditable = false
+        valueLabel.font = NSFont.monospacedDigitSystemFont(ofSize: 13, weight: .regular)
         valueLabel.sizeToFit()
     }
     
@@ -82,7 +81,7 @@ internal class SPowerItem: StatusItem {
         stackView.addArrangedSubview(iconView)
     }
     
-    func reload() {
+    @objc func reload() {
         let snapshot = IOPSCopyPowerSourcesInfo().takeRetainedValue()
         let sources = IOPSCopyPowerSourcesList(snapshot).takeRetainedValue() as Array
         for ps in sources {
@@ -97,9 +96,7 @@ internal class SPowerItem: StatusItem {
 				self.powerStatus.isCharged = isCharged
 			}
         }
-        DispatchQueue.main.async { [weak self] in
-            self?.updateIcon(value: self?.powerStatus.currentValue ?? 0)
-        }
+		self.updateIcon(value: self.powerStatus.currentValue)
     }
     
     private func updateIcon(value: Int) {

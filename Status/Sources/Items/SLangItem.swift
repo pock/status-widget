@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Defaults
+import AppKit
 import Carbon
 
 internal class SLangItem: StatusItem {
@@ -18,12 +18,19 @@ internal class SLangItem: StatusItem {
 	/// UI
 	private let iconView: NSImageView = NSImageView(frame: NSRect(x: 0, y: 0, width: 26, height: 26))
 	
+	init() {
+		print("[Status]: init SLangItem")
+		didLoad()
+	}
+	
 	deinit {
 		didUnload()
+		print("[Status]: deinit SLangItem")
 	}
 	
 	func didLoad() {
 		iconView.imageAlignment = .alignCenter
+		iconView.size(NSSize(width: 26, height: 26))
 		reload()
 		DistributedNotificationCenter.default().addObserver(self,
 															selector: #selector(selectedKeyboardInputSourceChanged),
@@ -32,7 +39,7 @@ internal class SLangItem: StatusItem {
 															suspensionBehavior: .deliverImmediately)
 	}
 	
-	var enabled: Bool{ return Defaults[.shouldShowLangItem] }
+	var enabled: Bool{ return Preferences[.shouldShowLangItem] }
 	
 	var title: String  { return "input-source" }
 	

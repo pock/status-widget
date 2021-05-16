@@ -173,7 +173,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = "Pierluigi Galdi";
 				TargetAttributes = {
 					3401772623D3231D00369905 = {
@@ -421,6 +421,7 @@
 				DEVELOPMENT_TEAM = 788D9WZ9Z3;
 				INFOPLIST_FILE = Status/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Application\\ Support/Pock/Widgets";
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pigigaldi.pock.Status;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -440,6 +441,7 @@
 				DEVELOPMENT_TEAM = 788D9WZ9Z3;
 				INFOPLIST_FILE = Status/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Application\\ Support/Pock/Widgets";
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pigigaldi.pock.Status;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

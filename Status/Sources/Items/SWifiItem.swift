@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Defaults
+import AppKit
 import CoreWLAN
 
 internal class SWifiItem: StatusItem {
@@ -19,15 +19,16 @@ internal class SWifiItem: StatusItem {
     private let iconView: NSImageView = NSImageView(frame: NSRect(x: 0, y: 0, width: 26, height: 26))
     
     init() {
+		print("[Status]: init SWifiItem")
         didLoad()
-        reload()
     }
     
     deinit {
         didUnload()
+		print("[Status]: deinit SWifiItem")
     }
     
-    var enabled: Bool{ return Defaults[.shouldShowWifiItem] }
+    var enabled: Bool{ return Preferences[.shouldShowWifiItem] }
     
     var title: String  { return "wifi" }
     
@@ -39,6 +40,7 @@ internal class SWifiItem: StatusItem {
     
     func didLoad() {
         self.wifiClient.delegate = self
+		self.reload()
         try? wifiClient.startMonitoringEvent(with: .linkDidChange)
         try? wifiClient.startMonitoringEvent(with: .ssidDidChange)
         try? wifiClient.startMonitoringEvent(with: .powerDidChange)
@@ -62,9 +64,7 @@ internal class SWifiItem: StatusItem {
             let c = code - 1
             icon = "wifi\(c > 4 ? 4 : c)"
         }
-        DispatchQueue.main.async { [weak self] in
-            self?.iconView.image = Bundle(for: StatusWidget.self).image(forResource: icon)
-        }
+		self.iconView.image = Bundle(for: StatusWidget.self).image(forResource: icon)
     }
     
 }

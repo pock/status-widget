@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Defaults
+import AppKit
 
 internal class SClockItem: StatusItem {
     
@@ -18,28 +18,26 @@ internal class SClockItem: StatusItem {
     private var clockLabel: NSTextField!
     
     init() {
+		print("[Status]: init SClockItem")
         didLoad()
-        reload()
     }
     
     deinit {
         didUnload()
+		print("[Status]: deinit SClockItem")
     }
     
     func didLoad() {
         // Required else it will lose reference to button currently being displayed
         if clockLabel == nil {
-            clockLabel = NSTextField()
-            clockLabel.frame = CGRect(origin: .zero, size: CGSize(width: 100, height: 44))
+            clockLabel = NSTextField(labelWithString: "…")
             clockLabel.font = NSFont.monospacedDigitSystemFont(ofSize: 13, weight: .medium)
-            clockLabel.backgroundColor = .clear
-            clockLabel.isBezeled = false
-            clockLabel.isEditable = false
             clockLabel.sizeToFit()
+			reload()
         }
-        refreshTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
-            self?.reload()
-        })
+		refreshTimer = Timer.scheduledTimer(timeInterval: 1, target: self, repeats: true, action: { [weak self] in
+			self?.reload()
+		})
     }
     
     func didUnload() {
@@ -47,7 +45,7 @@ internal class SClockItem: StatusItem {
         refreshTimer = nil
     }
     
-    var enabled: Bool{ return Defaults[.shouldShowDateItem] }
+    var enabled: Bool{ return Preferences[.shouldShowDateItem] }
     
     var title: String  { return "clock" }
     
@@ -57,9 +55,9 @@ internal class SClockItem: StatusItem {
         /** nothing to do here */
     }
     
-    func reload() {
+    @objc func reload() {
         let formatter = DateFormatter()
-        formatter.dateFormat = Defaults[.timeFormatTextField]
+        formatter.dateFormat = Preferences[.timeFormatTextField]
         formatter.locale = Locale(identifier: Locale.preferredLanguages.first ?? "en_US_POSIX")
         clockLabel?.stringValue = formatter.string(from: Date())
         clockLabel?.sizeToFit()
