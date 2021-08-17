@@ -12,6 +12,5 @@ target 'Status' do
 
   # Pods for Status
   pod 'PockKit'
-  pod 'Defaults'
 
 end

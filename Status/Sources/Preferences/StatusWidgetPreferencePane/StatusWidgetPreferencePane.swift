@@ -22,6 +22,12 @@ class StatusWidgetPreferencePane: NSViewController, NSTextFieldDelegate, PKWidge
     @IBOutlet weak var showDateItem:              NSButton!
     @IBOutlet weak var timeFormatTextField:       NSTextField!
     
+    func reset() {
+        Preferences.reset()
+        loadCheckboxState()
+        NotificationCenter.default.post(name: .shouldReloadStatusWidget, object: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.superview?.wantsLayer = true
